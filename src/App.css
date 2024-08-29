@@ -1,38 +1,23 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  min-height: 100vh; /* Garante que o App ocupe toda a altura da tela */
+  background-image: url('./assets/fundo_login.png'); /* Substitua pelo caminho correto */
+  background-size: cover; /* Faz com que a imagem cubra toda a área */
+  background-position: center; /* Centraliza a imagem */
+  background-repeat: no-repeat; /* Evita a repetição da imagem */
 }
 
-.App-link {
-  color: #61dafb;
+.content {
+  flex: 1;
+  padding: 20px;
+  margin-left: 700px; /* Margem para não sobrepor a barra lateral */
+  margin-top: 300px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.content h1{
+  font-size: 100px;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Certifica-se de que o HTML e o corpo tenham 100% da altura */
 }

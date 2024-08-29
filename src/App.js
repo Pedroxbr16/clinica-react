@@ -1,23 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Sidebar from './sidebar'; // Importa o componente Sidebar
+import './App.css'; // Importa os estilos (opcional)
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Sidebar />  {/* Renderiza o Sidebar */}
+      <div className="content">
+        <h1>Clínica blablabla</h1>       
+      </div>
     </div>
   );
 }
