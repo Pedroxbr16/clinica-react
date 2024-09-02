@@ -10,6 +10,7 @@
 .sidebar h2 {
   margin-top: 0;
   text-align: center;
+  font-size: 30px;
 }
 
 .sidebar ul {
@@ -22,9 +23,13 @@
 }
 
 .sidebar ul li a {
-  color: #fff;
+  color: #3e3636;
   text-decoration: none;
   display: block;
+  font-size: 30px;
+}
+.sidebar ul li a:hover{
+  background-color: #1d20236e;
 }
 
 .nested-list {
@@ -38,3 +43,5 @@
 .nested-list li a {
   color: #ddd;
 }
+
+
