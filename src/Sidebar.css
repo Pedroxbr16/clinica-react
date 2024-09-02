@@ -18,6 +18,10 @@
   padding: 0;
 }
 
+.sidebar .nested-list a{
+  font-size: 20px;
+}
+
 .sidebar ul li {
   margin: 15px 0;
 }

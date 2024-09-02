@@ -1,6 +1,6 @@
 import React from 'react';
 import Sidebar from './sidebar'; // Importa o componente Sidebar
-import './App.css'; // Importa os estilos (opcional)
+import './App.css'; // Importa os estilos 
 
 function App() {
   return (
