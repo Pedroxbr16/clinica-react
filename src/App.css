@@ -15,7 +15,10 @@
 }
 .content h1{
   font-size: 100px;
+  display: flex;
+  margin-left:100px;
 }
+
 html, body {
   margin: 0;
   padding: 0;
