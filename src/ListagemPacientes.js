@@ -42,7 +42,6 @@ function Pacientes() {
           ))}
         </tbody>
       </table>
-      <button>Cadastrar Paciente</button>
     </div>
   );
 }

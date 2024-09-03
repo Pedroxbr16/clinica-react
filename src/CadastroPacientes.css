@@ -1,0 +1,51 @@
+.cadastro-pacientes {
+    width: 1000px;
+   margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  .cadastro-pacientes h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .cadastro-pacientes form div {
+    margin-bottom: 15px;
+  }
+  
+  .cadastro-pacientes label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .cadastro-pacientes input[type="text"],
+  .cadastro-pacientes input[type="email"],
+  .cadastro-pacientes input[type="file"],
+  .cadastro-pacientes .react-datepicker-wrapper,
+  .cadastro-pacientes .react-datepicker__input-container {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .cadastro-pacientes button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .cadastro-pacientes button:hover {
+    background-color: #45a049;
+  }
+  
