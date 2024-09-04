@@ -10,13 +10,12 @@
 .content {
   flex: 1;
   padding: 20px;
-  margin-left: 700px; /* Margem para não sobrepor a barra lateral */
-  margin-top: 300px;
 }
 .content h1{
   font-size: 100px;
   display: flex;
-  margin-left:100px;
+  margin-left: 700px;
+  margin-top: 300px;
 }
 
 html, body {
