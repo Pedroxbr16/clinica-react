@@ -45,7 +45,7 @@ function App() {
   );
 }
 
-//content
+//content no css
 function Home() {
   return <h1>DocTech</h1>;
 }

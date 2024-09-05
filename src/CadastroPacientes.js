@@ -62,13 +62,18 @@ function CadastroPacientes() {
     <div className="cadastro-pacientes">
       <h2>Cadastro de Pacientes</h2>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div style={{ gridColumn: 'span 2' }}>
           <label>Nome:</label>
           <input type="text" name="nome" value={formData.nome} onChange={handleInputChange} required />
         </div>
-        <div>
+        <div style={{ gridColumn: 'span 2' }}>
           <label>Foto:</label>
-          <input type="file" name="foto" onChange={handleFileChange} />
+        <input 
+          type="file" 
+          name="foto" 
+          onChange={handleFileChange} 
+          accept="image/png, image/jpeg, image/jpg, application/pdf" 
+         />
         </div>
         <div>
           <label>CEP:</label>
