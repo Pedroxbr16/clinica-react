@@ -3,19 +3,27 @@ import { useNavigate } from 'react-router-dom';
 import './css/Login.css';
 
 function Login({ onLogin }) {
+  // Estados para armazenar o valor do nome de usuário e senha
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  
+  // Hook para navegar programaticamente para outras rotas
   const navigate = useNavigate();
 
+  // Função chamada ao enviar o formulário
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Previne o comportamento padrão de recarregamento da página
 
-    // Verifique as credenciais aqui (esta é uma simulação)
+    // Simulação de verificação de credenciais
     if (username && password) {
-      // Supondo que o login seja sempre bem-sucedido
-      localStorage.setItem('isAuthenticated', 'true'); // Armazena a autenticação
+      // Armazena a autenticação no localStorage
+      localStorage.setItem('isAuthenticated', 'true');
+      
+      // Chama a função onLogin passada como props para atualizar o estado de autenticação
       onLogin();
-      navigate('/'); // Redireciona para a página inicial após o login
+      
+      // Redireciona para a página inicial após o login
+      navigate('/');
     }
   };
 
@@ -24,6 +32,7 @@ function Login({ onLogin }) {
       <h2>DocTech</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
+          {/* Campo para o nome de usuário */}
           <label htmlFor="username">Usuário</label>
           <input
             type="text"
@@ -34,6 +43,7 @@ function Login({ onLogin }) {
           />
         </div>
         <div className="form-group">
+          {/* Campo para a senha */}
           <label htmlFor="password">Senha</label>
           <input
             type="password"
@@ -43,6 +53,7 @@ function Login({ onLogin }) {
             required
           />
         </div>
+        {/* Botão para enviar o formulário */}
         <button type="submit" className="login-button">Login</button>
       </form>
     </div>

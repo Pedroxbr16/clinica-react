@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate, useLocation } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Login from './Login';
-import ListagemPacientes from './ListagemPacientes';  
-import CadastroPacientes from './CadastroPacientes';  
-import Agenda from './Agenda';  
+import ListagemPacientes from './ListagemPacientes';
+import CadastroPacientes from './CadastroPacientes';
+import Agenda from './Agenda';
+import CreateEvent from './CreateEvent'; // Importa o componente de criação de eventos
 import './css/App.css';
 
 function App() {
@@ -16,12 +17,12 @@ function App() {
   }, []);
 
   const handleLogin = () => {
-    localStorage.setItem('isAuthenticated', 'true'); 
+    localStorage.setItem('isAuthenticated', 'true');
     setIsAuthenticated(true);
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('isAuthenticated'); 
+    localStorage.removeItem('isAuthenticated');
     setIsAuthenticated(false);
   };
 
@@ -38,21 +39,22 @@ function App() {
   );
 }
 
-// Componente para alterar a classe content com base na rota
 const ConditionalContent = ({ isAuthenticated, handleLogin }) => {
   const location = useLocation(); // Hook para pegar a localização atual
 
-  // Verifica se a rota é a da agenda
+  // Verifica se a rota é a da criação de eventos
+  const isCreateEventRoute = location.pathname === '/create-event';
   const isAgendaRoute = location.pathname === '/agenda';
 
   return (
-    <div className={isAgendaRoute ? 'content agenda-content' : 'content'}>
+    <div className={isAgendaRoute || isCreateEventRoute ? 'content' : 'content'}>
       <Routes>
         <Route path="/login" element={!isAuthenticated ? <Login onLogin={handleLogin} /> : <Navigate to="/" />} />
         <Route path="/" element={isAuthenticated ? <Home /> : <Navigate to="/login" />} />
         <Route path="/listagemPaciente" element={isAuthenticated ? <ListagemPacientes /> : <Navigate to="/login" />} />
         <Route path="/cadastro" element={isAuthenticated ? <CadastroPacientes /> : <Navigate to="/login" />} />
-        <Route path="/agenda" element={isAuthenticated ? <Agenda /> : <Navigate to="/login" />} />
+        <Route path="/agenda" element={isAuthenticated && !isCreateEventRoute ? <Agenda /> : <Navigate to="/login" />} />
+        <Route path="/create-event" element={isAuthenticated ? <CreateEvent /> : <Navigate to="/login" />} />
       </Routes>
     </div>
   );

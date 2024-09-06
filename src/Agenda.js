@@ -4,17 +4,21 @@ import moment from 'moment';
 import 'moment/locale/pt-br';  // Importa a localização em português do Brasil
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import './css/agenda.css'; // Aqui você pode ajustar o CSS
+import CreateEvent from './CreateEvent'; // Certifique-se de que o caminho está correto
 
 // Configura o moment para português
 moment.locale('pt-br');
 
 const localizer = momentLocalizer(moment);
 
-const CalendarComponent = () => {
-  const [events] = useState([
-  
-    // Adicione mais eventos aqui
-  ]);
+const Agenda = () => {
+  // Define o estado para armazenar os eventos
+  const [events, setEvents] = useState([]); // Inicializa o estado com um array vazio
+
+  // Função para adicionar um novo evento
+  const handleAddEvent = (newEvent) => {
+    setEvents([...events, newEvent]); // Adiciona o novo evento ao estado
+  };
 
   return (
     <div className="calendar-container">
@@ -40,4 +44,4 @@ const CalendarComponent = () => {
   );
 };
 
-export default CalendarComponent;
+export default Agenda;

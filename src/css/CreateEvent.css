@@ -1,0 +1,41 @@
+.create-event-container {
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+  }
+  
+  .create-event-container h2 {
+    margin-bottom: 15px;
+  }
+  
+  .create-event-container .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .create-event-container .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .create-event-container .form-group input,
+  .create-event-container .form-group .react-datepicker-wrapper {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .create-event-container button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .create-event-container button:hover {
+    background-color: #0056b3;
+  }
+  
