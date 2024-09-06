@@ -1,28 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate, useLocation } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Login from './Login';
-import ListagemPacientes from './ListagemPacientes';  // Importando o componente de listagem
-import CadastroPacientes from './CadastroPacientes';  // Importando o componente de cadastro
-import Agenda from './Agenda';  // Importando o componente da agenda
+import ListagemPacientes from './ListagemPacientes';  
+import CadastroPacientes from './CadastroPacientes';  
+import Agenda from './Agenda';  
 import './css/App.css';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    // Verifica o status de autenticação quando o componente é montado
     const authStatus = localStorage.getItem('isAuthenticated');
     setIsAuthenticated(authStatus === 'true');
   }, []);
 
   const handleLogin = () => {
-    localStorage.setItem('isAuthenticated', 'true'); // Define o status de autenticação
+    localStorage.setItem('isAuthenticated', 'true'); 
     setIsAuthenticated(true);
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('isAuthenticated'); // Remove o status de autenticação
+    localStorage.removeItem('isAuthenticated'); 
     setIsAuthenticated(false);
   };
 
@@ -30,22 +29,35 @@ function App() {
     <Router>
       <div className="app">
         {isAuthenticated && <Sidebar onLogout={handleLogout} />}
-        <div className="content">
-          <Routes>
-            <Route path="/login" element={!isAuthenticated ? <Login onLogin={handleLogin} /> : <Navigate to="/" />} />
-            <Route path="/" element={isAuthenticated ? <Home /> : <Navigate to="/login" />} />
-            <Route path="/listagemPaciente" element={isAuthenticated ? <ListagemPacientes /> : <Navigate to="/login" />} />
-            <Route path="/cadastro" element={isAuthenticated ? <CadastroPacientes /> : <Navigate to="/login" />} />
-            <Route path="/agenda" element={isAuthenticated ? <Agenda /> : <Navigate to="/login" />} />
-            {/* Outras rotas podem ser adicionadas aqui */}
-          </Routes>
-        </div>
+        <ConditionalContent
+          isAuthenticated={isAuthenticated}
+          handleLogin={handleLogin}
+        />
       </div>
     </Router>
   );
 }
 
-//content no css
+// Componente para alterar a classe content com base na rota
+const ConditionalContent = ({ isAuthenticated, handleLogin }) => {
+  const location = useLocation(); // Hook para pegar a localização atual
+
+  // Verifica se a rota é a da agenda
+  const isAgendaRoute = location.pathname === '/agenda';
+
+  return (
+    <div className={isAgendaRoute ? 'content agenda-content' : 'content'}>
+      <Routes>
+        <Route path="/login" element={!isAuthenticated ? <Login onLogin={handleLogin} /> : <Navigate to="/" />} />
+        <Route path="/" element={isAuthenticated ? <Home /> : <Navigate to="/login" />} />
+        <Route path="/listagemPaciente" element={isAuthenticated ? <ListagemPacientes /> : <Navigate to="/login" />} />
+        <Route path="/cadastro" element={isAuthenticated ? <CadastroPacientes /> : <Navigate to="/login" />} />
+        <Route path="/agenda" element={isAuthenticated ? <Agenda /> : <Navigate to="/login" />} />
+      </Routes>
+    </div>
+  );
+};
+
 function Home() {
   return <h1>DocTech</h1>;
 }
