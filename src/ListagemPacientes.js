@@ -4,12 +4,12 @@ function Pacientes() {
   const [pacientes, setPacientes] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
 
-  useEffect(() => {
-    // Chama a API para buscar os pacientes
-    fetch('http://seu-servidor/api/pacientes.php')
-      .then(response => response.json())
-      .then(data => setPacientes(data));
-  }, []);
+  // useEffect(() => {
+  //   // Chama a API para buscar os pacientes
+  //   fetch('http://seu-servidor/api/pacientes.php')
+  //     .then(response => response.json())
+  //     .then(data => setPacientes(data));
+  // }, []);
 
   const filteredPacientes = pacientes.filter(paciente =>
     paciente.nome.toLowerCase().includes(searchTerm.toLowerCase())

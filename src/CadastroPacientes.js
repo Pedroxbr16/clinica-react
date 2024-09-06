@@ -3,7 +3,7 @@ import axios from 'axios';
 import InputMask from 'react-input-mask';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import './CadastroPacientes.css';
+import './css/CadastroPacientes.css';
 
 function CadastroPacientes() {
   const [formData, setFormData] = useState({
@@ -51,6 +51,11 @@ function CadastroPacientes() {
       }
     }
   };
+  const estadosBrasileiros = [
+    'AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA',
+    'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN',
+    'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'
+  ];
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -62,11 +67,11 @@ function CadastroPacientes() {
     <div className="cadastro-pacientes">
       <h2>Cadastro de Pacientes</h2>
       <form onSubmit={handleSubmit}>
-        <div style={{ gridColumn: 'span 2' }}>
+        <div style={{ gridColumn: 'span 1' }}>
           <label>Nome:</label>
           <input type="text" name="nome" value={formData.nome} onChange={handleInputChange} required />
         </div>
-        <div style={{ gridColumn: 'span 2' }}>
+        <div style={{ gridColumn: 'span 1' }}>
           <label>Foto:</label>
         <input 
           type="file" 
@@ -100,9 +105,21 @@ function CadastroPacientes() {
           <input type="text" name="cidade" value={formData.cidade} onChange={handleInputChange} required />
         </div>
         <div>
-          <label>Estado:</label>
-          <input type="text" name="estado" value={formData.estado} onChange={handleInputChange} required />
-        </div>
+        <label>Estado:</label>
+          <select
+            name="estado"
+            value={formData.estado}
+            onChange={handleInputChange}
+            required
+          >
+            <option value="">Selecione um Estado</option>
+            {estadosBrasileiros.map((estado) => (
+              <option key={estado} value={estado}>
+                {estado}
+              </option>
+            ))}
+          </select>
+          </div>
         <div>
           <label>CPF:</label>
           <InputMask
@@ -153,7 +170,7 @@ function CadastroPacientes() {
           />
         </div>
         <button type="submit">Cadastrar</button>
-      </form>
+      </form> 
     </div>
   );
 }

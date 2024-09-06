@@ -5,7 +5,7 @@ import Login from './Login';
 import ListagemPacientes from './ListagemPacientes';  // Importando o componente de listagem
 import CadastroPacientes from './CadastroPacientes';  // Importando o componente de cadastro
 import Agenda from './Agenda';  // Importando o componente da agenda
-import './App.css';
+import './css/App.css';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);

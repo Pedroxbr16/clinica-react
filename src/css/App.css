@@ -1,7 +1,7 @@
 .app {
   display: flex;
   min-height: 100vh; /* Garante que o App ocupe toda a altura da tela */
-  background-image: url('./assets/fundo_login.png'); /* Substitua pelo caminho correto */
+  background-image: url('../assets/fundo_login.png'); /* Substitua pelo caminho correto */
   background-size: cover; /* Faz com que a imagem cubra toda a área */
   background-position: center; /* Centraliza a imagem */
   background-repeat: no-repeat; /* Evita a repetição da imagem */

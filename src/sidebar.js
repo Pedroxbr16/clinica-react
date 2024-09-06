@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
-import './Sidebar.css';
+import './css/Sidebar.css';
 
 function Sidebar({ onLogout }) {
   const [showPatientsList, setShowPatientsList] = useState(false);
