@@ -37,6 +37,7 @@ function Login({ onLogin }) {
           <input
             type="text"
             id="username"
+            placeholder='insira seu usuário...'
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
@@ -48,13 +49,14 @@ function Login({ onLogin }) {
           <input
             type="password"
             id="password"
+            placeholder='insira sua senha...'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </div>
         {/* Botão para enviar o formulário */}
-        <button type="submit" className="login-button">Login</button>
+        <button type="submit" className="login-button">Entrar</button>
       </form>
     </div>
   );

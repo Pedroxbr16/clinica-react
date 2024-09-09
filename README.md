@@ -1,17 +1,17 @@
 # Passo a passo pra rodar o sistema
 
-## primeiro clone o repositorio
+## Primeiro clone o repositorio
 
 ```bash
 git clone https://github.com/Pedroxbr16/clinica-react.git
 ```
-## após isso navegue até o diretorio onde está localizado
+## Após isso navegue até o diretorio onde está localizado
 
 ```bash
 cd <NOME_DO_DIRETORIO>
 ```
 
-## instale as dependencias do projeto
+## Instale as dependencias do projeto
 
 ```bash
 npm install
@@ -19,7 +19,7 @@ npm install
 yarn install
 ```
 
-## rode ele
+## Rode ele
 
 ```bash
 npm start

@@ -5,7 +5,6 @@
   border: 1px solid #ccc;
   border-radius: 10px;
   background-color: #f9f9f9;
-  margin-top: 30px;
 }
 
 .cadastro-pacientes h2 {
@@ -16,7 +15,7 @@
 .cadastro-pacientes form {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* Duas colunas de tamanho igual */
-  gap: 20px; /* Espaçamento entre os campos */
+  gap: 14px; /* Espaçamento entre os campos */
 }
 
 .cadastro-pacientes form div {

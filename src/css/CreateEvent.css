@@ -1,16 +1,17 @@
 .create-event-container {
     padding: 20px;
-    margin-bottom: 20px;
     background-color: #f9f9f9;
     border-radius: 8px;
+    width: 70%;
+    margin-left: 250px;
+    height: 89vh;
   }
-  
   .create-event-container h2 {
     margin-bottom: 15px;
   }
   
   .create-event-container .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 30px;
   }
   
   .create-event-container .form-group label {
@@ -24,6 +25,7 @@
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
+
   }
   
   .create-event-container button {

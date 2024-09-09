@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './css/CreateEvent.css';
 
 const CreateEvent = () => {
@@ -6,17 +6,41 @@ const CreateEvent = () => {
     title: '',
     start: new Date(),
     end: new Date(),
+    patient: '', // Adicionando o campo de paciente
   });
+
+  const [patients, setPatients] = useState([]); // Armazena os pacientes buscados
+  const [searchTerm, setSearchTerm] = useState(''); // Armazena o termo de busca do paciente
+
+  // Função para buscar os pacientes da API
+  // useEffect(() => {
+  //   if (searchTerm) {
+  //     fetch(`/api/patients?search=${searchTerm}`) // Altere conforme sua API
+  //       .then((response) => response.json())
+  //       .then((data) => setPatients(data))
+  //       .catch((error) => console.error('Erro ao buscar pacientes:', error));
+  //   }
+  // }, [searchTerm]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setEvent({ ...event, [name]: value });
   };
 
+  const handlePatientChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const handleSelectPatient = (patient) => {
+    setEvent({ ...event, patient });
+    setSearchTerm(patient.name); // Atualiza o campo de pesquisa com o nome do paciente
+    setPatients([]); // Esconde as sugestões após selecionar
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Lógica para criar o evento (enviar para o backend ou atualizar o estado global)
     console.log('Evento criado:', event);
+    // Lógica para enviar o evento para o backend
   };
 
   return (
@@ -24,7 +48,7 @@ const CreateEvent = () => {
       <h2>Criar Novo Evento</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Título:</label>
+          <label>Título: </label>
           <input
             type="text"
             name="title"
@@ -34,7 +58,7 @@ const CreateEvent = () => {
           />
         </div>
         <div>
-          <label>Início:</label>
+          <label>Início: </label>
           <input
             type="datetime-local"
             name="start"
@@ -44,7 +68,7 @@ const CreateEvent = () => {
           />
         </div>
         <div>
-          <label>Fim:</label>
+          <label>Fim: </label>
           <input
             type="datetime-local"
             name="end"
@@ -53,7 +77,25 @@ const CreateEvent = () => {
             required
           />
         </div>
-        <button type="submit">Criar Evento</button>
+        <div>
+          <label>Paciente: </label>
+          <input
+            type="text"
+            value={searchTerm}
+            onChange={handlePatientChange}
+            placeholder="Buscar paciente..."
+          />
+          {patients.length > 0 && (
+            <ul className="patients-list">
+              {patients.map((patient) => (
+                <li key={patient.id} onClick={() => handleSelectPatient(patient)}>
+                  {patient.name}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+        <button type="submit">Agendar</button>
       </form>
     </div>
   );
