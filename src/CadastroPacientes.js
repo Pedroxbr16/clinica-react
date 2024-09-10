@@ -6,7 +6,6 @@ import 'react-datepicker/dist/react-datepicker.css';
 import './css/CadastroPacientes.css';
 
 function CadastroPacientes() {
-  // Estado para armazenar os dados do formulário
   const [formData, setFormData] = useState({
     nome: '',
     foto: null,
@@ -15,32 +14,31 @@ function CadastroPacientes() {
     bairro: '',
     cidade: '',
     estado: '',
-    cpf: '',
-    nascimento: new Date(), // Data de nascimento inicializada com a data atual
+    documento: '', // Campo usado para CPF ou CNPJ
+    rg: '', // Campo para RG
+    nascimento: new Date(),
     email: '',
     telefone: '',
     celular: '',
   });
 
-  // Função para lidar com mudanças nos campos de entrada
+  const [isCNPJ, setIsCNPJ] = useState(false); // Estado para alternar entre CPF e CNPJ
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  // Função para lidar com a mudança da data de nascimento
   const handleDateChange = (date) => {
     setFormData({ ...formData, nascimento: date });
   };
 
-  // Função para lidar com a mudança do campo de upload de arquivo (foto)
   const handleFileChange = (e) => {
     setFormData({ ...formData, foto: e.target.files[0] });
   };
 
-  // Função para buscar informações do CEP quando o campo perde o foco
   const handleCepBlur = async () => {
-    if (formData.cep.length === 9) { // Verifica se o CEP está completo
+    if (formData.cep.length === 9) {
       try {
         const response = await axios.get(`https://viacep.com.br/ws/${formData.cep}/json/`);
         if (response.data) {
@@ -52,24 +50,25 @@ function CadastroPacientes() {
           });
         }
       } catch (error) {
-        console.error('Erro ao buscar o CEP:', error); // Loga erro no console se a requisição falhar
+        console.error('Erro ao buscar o CEP:', error);
       }
     }
   };
 
-  // Lista de estados brasileiros para o campo de seleção
   const estadosBrasileiros = [
     'AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA',
     'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN',
     'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'
   ];
 
-  // Função chamada ao enviar o formulário
   const handleSubmit = (e) => {
-    e.preventDefault(); // Previne o comportamento padrão de recarregamento da página
+    e.preventDefault();
+    console.log('Dados do formulário:', formData);
+  };
 
-    // Aqui você pode enviar o formData para o backend
-    console.log('Dados do formulário:', formData); // Exibe os dados do formulário no console
+  const toggleDocumentoType = () => {
+    setIsCNPJ(!isCNPJ);
+    setFormData({ ...formData, documento: '' });
   };
 
   return (
@@ -77,7 +76,6 @@ function CadastroPacientes() {
       <h2>Cadastro de Pacientes</h2>
       <form onSubmit={handleSubmit}>
         <div style={{ gridColumn: 'span 1' }}>
-          {/* Campo para o nome do paciente */}
           <label>Nome:</label>
           <input
             type="text"
@@ -87,8 +85,8 @@ function CadastroPacientes() {
             required
           />
         </div>
+
         <div style={{ gridColumn: 'span 1' }}>
-          {/* Campo para upload de foto do paciente */}
           <label>Foto:</label>
           <input 
             type="file" 
@@ -97,8 +95,8 @@ function CadastroPacientes() {
             accept="image/png, image/jpeg, image/jpg, application/pdf" 
           />
         </div>
+
         <div>
-          {/* Campo para o CEP com máscara */}
           <label>CEP:</label>
           <InputMask
             mask="99999-999"
@@ -110,8 +108,8 @@ function CadastroPacientes() {
             required
           />
         </div>
+
         <div>
-          {/* Campo para o número da residência */}
           <label>Número:</label>
           <input
             type="text"
@@ -121,8 +119,8 @@ function CadastroPacientes() {
             required
           />
         </div>
+
         <div>
-          {/* Campo para o bairro */}
           <label>Bairro:</label>
           <input
             type="text"
@@ -132,8 +130,8 @@ function CadastroPacientes() {
             required
           />
         </div>
+
         <div>
-          {/* Campo para a cidade */}
           <label>Cidade:</label>
           <input
             type="text"
@@ -143,8 +141,8 @@ function CadastroPacientes() {
             required
           />
         </div>
+
         <div>
-          {/* Campo para o estado com uma lista de estados brasileiros */}
           <label>Estado:</label>
           <select
             name="estado"
@@ -160,34 +158,49 @@ function CadastroPacientes() {
             ))}
           </select>
         </div>
+
         <div>
-          {/* Campo para o CPF com máscara */}
-          <label>CPF:</label>
+          <label>{isCNPJ ? 'CNPJ:' : 'CPF:'}</label>
           <InputMask
-            mask="999.999.999-99"
+            mask={isCNPJ ? "99.999.999/9999-99" : "999.999.999-99"}
             type="text"
-            name="cpf"
-            value={formData.cpf}
+            name="documento"
+            value={formData.documento}
+            onChange={handleInputChange}
+            required
+          />
+          <button type="button" onClick={toggleDocumentoType}>
+            Alternar para {isCNPJ ? 'CPF' : 'CNPJ'}
+          </button>
+        </div>
+
+        <div>
+          <label>RG:</label>
+          <InputMask
+            mask="99.999.999-9" // Máscara para RG
+            type="text"
+            name="rg"
+            value={formData.rg}
             onChange={handleInputChange}
             required
           />
         </div>
+
         <div>
-          {/* Campo para a data de nascimento com o DatePicker */}
           <label>Data de Nascimento:</label>
           <DatePicker
             selected={formData.nascimento}
             onChange={handleDateChange}
             dateFormat="dd/MM/yyyy"
-            maxDate={new Date()} // Impede seleção de datas futuras
+            maxDate={new Date()}
             showYearDropdown
             showMonthDropdown
             dropdownMode="select"
             required
           />
         </div>
+
         <div>
-          {/* Campo para o email */}
           <label>Email:</label>
           <input
             type="email"
@@ -197,8 +210,8 @@ function CadastroPacientes() {
             required
           />
         </div>
+
         <div>
-          {/* Campo para o telefone com máscara */}
           <label>Telefone:</label>
           <InputMask
             mask="(99) 9999-9999"
@@ -208,8 +221,8 @@ function CadastroPacientes() {
             onChange={handleInputChange}
           />
         </div>
+
         <div>
-          {/* Campo para o celular com máscara */}
           <label>Celular:</label>
           <InputMask
             mask="(99) 99999-9999"
@@ -220,9 +233,9 @@ function CadastroPacientes() {
             required
           />
         </div>
-        {/* Botão para enviar o formulário */}
+
         <button type="submit">Cadastrar</button>
-      </form> 
+      </form>
     </div>
   );
 }

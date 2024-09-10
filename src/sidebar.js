@@ -45,8 +45,6 @@ function Sidebar({ onLogout }) {
             <ul className="nested-list">
               <li><Link to="/agenda">Mostrar Agenda</Link></li>
               <li><Link to="/create-event">Criar Agendamento</Link></li>
-              <li><Link to="/AlterarAgenda">Alterar Agendamento</Link></li>
-              <li><Link to="/ExcluirAgenda">Excluir Agendamento</Link></li>
             </ul>
           )}
         </li>

@@ -1,43 +1,97 @@
 .create-event-container {
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    width: 70%;
-    margin-left: 250px;
-    height: 89vh;
-  }
-  .create-event-container h2 {
-    margin-bottom: 15px;
-  }
-  
-  .create-event-container .form-group {
-    margin-bottom: 30px;
-  }
-  
-  .create-event-container .form-group label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  .create-event-container .form-group input,
-  .create-event-container .form-group .react-datepicker-wrapper {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  width: 60%;
+  margin-left: auto; /* Centraliza horizontalmente */
+  margin-right: auto; /* Centraliza horizontalmente */
+  height: 80vh;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-template-columns: 1fr; /* Uma coluna */
+  gap: 20px; /* Espaçamento geral entre os campos */
+  margin-top: 100px;
+}
 
-  }
-  
-  .create-event-container button {
-    padding: 10px 15px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .create-event-container button:hover {
-    background-color: #0056b3;
-  }
-  
+.create-event-container h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 20px; /* Espaçamento abaixo do título */
+}
+
+.create-event-container .form-group {
+  margin-bottom: 20px; /* Espaçamento entre os campos */
+}
+
+.create-event-container .form-group label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+  color: #555;
+}
+
+.create-event-container .form-group input,
+.create-event-container .form-group select,
+.create-event-container .form-group .react-datepicker-wrapper {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.create-event-container .form-group input:focus,
+.create-event-container .form-group select:focus,
+.create-event-container .form-group .react-datepicker-wrapper:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Ajustes para campos de data */
+.create-event-container .form-group.date-group {
+  display: flex;
+  gap: 20px; /* Espaçamento entre os campos de data */
+}
+
+.create-event-container .patients-list,
+.create-event-container .doctors-list {
+  list-style: none;
+  margin-top: 10px;
+  padding: 0;
+  max-height: 150px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fff;
+}
+
+.create-event-container .patients-list li,
+.create-event-container .doctors-list li {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+.create-event-container .patients-list li:hover,
+.create-event-container .doctors-list li:hover {
+  background-color: #f0f0f0;
+}
+
+.create-event-container button {
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.create-event-container button:hover {
+  background-color: #0056b3;
+}
