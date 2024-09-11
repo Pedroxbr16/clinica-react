@@ -7,7 +7,7 @@ import './css/Sidebar.css';
 function Sidebar({ onLogout }) {
   const [showPatientsList, setShowPatientsList] = useState(false);
   const [showAppointmentsList, setShowAppointmentsList] = useState(false);
-  const [showAdminList, setShowAdminList] = useState(false); // Estado para o menu de Administração
+  const [showAdminList, setShowAdminList] = useState(false); 
   const navigate = useNavigate();
 
   const togglePatientsList = () => {

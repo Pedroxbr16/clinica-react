@@ -15,7 +15,7 @@ function CadastroPacientes() {
     cidade: '',
     estado: '',
     documento: '', // Campo usado para CPF ou CNPJ
-    rg: '', // Campo para RG
+    rg: '', 
     nascimento: new Date(),
     email: '',
     telefone: '',
@@ -177,7 +177,7 @@ function CadastroPacientes() {
         <div>
           <label>RG:</label>
           <InputMask
-            mask="99.999.999-9" // Máscara para RG
+            mask="99.999.999-9" 
             type="text"
             name="rg"
             value={formData.rg}

@@ -5,8 +5,9 @@ import Login from './Login';
 import ListagemPacientes from './ListagemPacientes';
 import CadastroPacientes from './CadastroPacientes';
 import Agenda from './Agenda';
-import CreateEvent from './CreateEvent'; // Importa o componente de criação de eventos
+import CreateEvent from './CreateEvent'; 
 import './css/App.css';
+import Config from './ConfigADM';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -40,7 +41,7 @@ function App() {
 }
 
 const ConditionalContent = ({ isAuthenticated, handleLogin }) => {
-  const location = useLocation(); // Hook para pegar a localização atual
+  const location = useLocation(); 
 
   // Verifica se a rota é a da criação de eventos
   const isCreateEventRoute = location.pathname === '/create-event';
@@ -55,6 +56,7 @@ const ConditionalContent = ({ isAuthenticated, handleLogin }) => {
         <Route path="/cadastro" element={isAuthenticated ? <CadastroPacientes /> : <Navigate to="/login" />} />
         <Route path="/agenda" element={isAuthenticated && !isCreateEventRoute ? <Agenda /> : <Navigate to="/login" />} />
         <Route path="/create-event" element={isAuthenticated ? <CreateEvent /> : <Navigate to="/login" />} />
+        <Route path="/config" element={isAuthenticated ? <Config /> : <Navigate to="/login" />} />
       </Routes>
     </div>
   );

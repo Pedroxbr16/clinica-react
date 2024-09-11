@@ -32,7 +32,6 @@ function Login({ onLogin }) {
       <h2>DocTech</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          {/* Campo para o nome de usuário */}
           <label htmlFor="username">Usuário</label>
           <input
             type="text"
@@ -44,7 +43,6 @@ function Login({ onLogin }) {
           />
         </div>
         <div className="form-group">
-          {/* Campo para a senha */}
           <label htmlFor="password">Senha</label>
           <input
             type="password"
@@ -55,7 +53,6 @@ function Login({ onLogin }) {
             required
           />
         </div>
-        {/* Botão para enviar o formulário */}
         <button type="submit" className="login-button">Entrar</button>
       </form>
     </div>

@@ -9,15 +9,13 @@
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   display: grid;
   grid-template-columns: 1fr; /* Uma coluna */
-  gap: 20px; /* Espaçamento geral entre os campos */
-  margin-top:0px;
+  gap: 20px;
 }
 
 .create-event-container h2 {
   text-align: center;
   font-size: 1.8rem;
   color: #333;
-  margin-bottom: 20px; /* Espaçamento abaixo do título */
 }
 
 .create-event-container .form-group {
