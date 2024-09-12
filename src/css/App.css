@@ -6,7 +6,6 @@
   background-position: center; /* Centraliza a imagem */
   background-repeat: no-repeat; /* Evita a repetição da imagem */
 }
-
 .content {
   flex: 1;
   padding: 20px;

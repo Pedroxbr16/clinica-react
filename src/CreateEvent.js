@@ -31,6 +31,7 @@ const CreateEvent = ({ types = [] }) => {
           <input
             type="text"
             name="title"
+            placeholder='Adicione um título a consulta...'
             value={event.title}
             onChange={handleInputChange}
             required
@@ -57,6 +58,28 @@ const CreateEvent = ({ types = [] }) => {
           />
         </div>
         <div className="form-group">
+          <label>Paciente: </label>
+          <input
+            type="text"
+            name="patient"
+            placeholder='Buscar paciente...'
+            value={event.patient}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>Médico: </label>
+          <input
+            type="text"
+            name="doctor"
+            placeholder='Buscar médico...'
+            value={event.doctor}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div className="form-group">
           <label>Tipo de Consulta: </label>
           <select
             name="type"
@@ -65,7 +88,7 @@ const CreateEvent = ({ types = [] }) => {
             required
           >
             <option value="">Selecione um Tipo de Consulta</option>
-            {Array.isArray(types) && types.length > 0 ? (
+            {types.length > 0 ? (
               types.map((type, index) => (
                 <option key={index} value={type}>
                   {type}

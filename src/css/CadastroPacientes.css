@@ -5,6 +5,7 @@
   border: 1px solid #ccc;
   border-radius: 10px;
   background-color: #f9f9f9;
+  margin-top: 60px;
 }
 
 .cadastro-pacientes h2 {
@@ -14,13 +15,12 @@
 
 .cadastro-pacientes form {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Duas colunas de tamanho igual */
+  grid-template-columns: repeat(3, 1fr); /* Três colunas */
   gap: 14px; /* Espaçamento entre os campos */
 }
 
 .cadastro-pacientes form div {
   margin-bottom: 15px;
- 
 }
 
 .cadastro-pacientes label {
@@ -32,6 +32,8 @@
 .cadastro-pacientes input[type="text"],
 .cadastro-pacientes input[type="email"],
 .cadastro-pacientes input[type="file"],
+.cadastro-pacientes input[type="date"],
+.cadastro-pacientes select,
 .cadastro-pacientes .react-datepicker-wrapper,
 .cadastro-pacientes .react-datepicker__input-container {
   width: 100%;
@@ -42,7 +44,7 @@
 }
 
 .cadastro-pacientes button {
-  grid-column: span 2; /* O botão vai ocupar as duas colunas */
+  grid-column: span 3; /* O botão ocupa as três colunas */
   padding: 10px;
   background-color: #4CAF50;
   color: white;

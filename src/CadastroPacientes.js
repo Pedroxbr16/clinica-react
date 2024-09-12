@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import InputMask from 'react-input-mask';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
 import './css/CadastroPacientes.css';
 
 function CadastroPacientes() {
@@ -14,23 +12,20 @@ function CadastroPacientes() {
     bairro: '',
     cidade: '',
     estado: '',
-    documento: '', // Campo usado para CPF ou CNPJ
-    rg: '', 
-    nascimento: new Date(),
+    cpf: '',
+    cnpj: '',
+    documentoIdentidade: '', // Campo usado para RG ou CNH
+    tipoDocumento: 'RG', // Controle para alternar entre RG e CNH
+    nascimento: new Date().toISOString().slice(0, 16), // Formato datetime-local
+    genero: '', // Novo campo para gênero
     email: '',
     telefone: '',
     celular: '',
   });
 
-  const [isCNPJ, setIsCNPJ] = useState(false); // Estado para alternar entre CPF e CNPJ
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-  };
-
-  const handleDateChange = (date) => {
-    setFormData({ ...formData, nascimento: date });
   };
 
   const handleFileChange = (e) => {
@@ -66,9 +61,12 @@ function CadastroPacientes() {
     console.log('Dados do formulário:', formData);
   };
 
-  const toggleDocumentoType = () => {
-    setIsCNPJ(!isCNPJ);
-    setFormData({ ...formData, documento: '' });
+  const toggleDocumentoIdentidade = () => {
+    setFormData({
+      ...formData,
+      tipoDocumento: formData.tipoDocumento === 'RG' ? 'CNH' : 'RG',
+      documentoIdentidade: '', // Limpa o campo quando alternar
+    });
   };
 
   return (
@@ -86,16 +84,17 @@ function CadastroPacientes() {
           />
         </div>
 
-        <div style={{ gridColumn: 'span 1' }}>
+        <div className="file-input">
           <label>Foto:</label>
           <input 
             type="file" 
             name="foto" 
+            id="foto" 
             onChange={handleFileChange} 
             accept="image/png, image/jpeg, image/jpg, application/pdf" 
-          />
+          />       
         </div>
-
+     
         <div>
           <label>CEP:</label>
           <InputMask
@@ -159,45 +158,73 @@ function CadastroPacientes() {
           </select>
         </div>
 
+        {/* CPF */}
         <div>
-          <label>{isCNPJ ? 'CNPJ:' : 'CPF:'}</label>
+          <label>CPF:</label>
           <InputMask
-            mask={isCNPJ ? "99.999.999/9999-99" : "999.999.999-99"}
+            mask="999.999.999-99"
             type="text"
-            name="documento"
-            value={formData.documento}
+            name="cpf"
+            value={formData.cpf}
+            onChange={handleInputChange}
+            required={!formData.cnpj} // Requerido se CNPJ não for preenchido
+          />
+        </div>
+
+        {/* CNPJ */}
+        <div>
+          <label>CNPJ:</label>
+          <InputMask
+            mask="99.999.999/9999-99"
+            type="text"
+            name="cnpj"
+            value={formData.cnpj}
+            onChange={handleInputChange}
+            required={!formData.cpf} // Requerido se CPF não for preenchido
+          />
+        </div>
+
+        {/* Alternar entre RG e CNH */}
+        <div>
+          <label>{formData.tipoDocumento === 'RG' ? 'RG:' : 'CNH:'}</label>
+          <InputMask
+            mask={formData.tipoDocumento === 'RG' ? '99.999.999-9' : '999999999'}
+            type="text"
+            name="documentoIdentidade"
+            value={formData.documentoIdentidade}
             onChange={handleInputChange}
             required
           />
-          <button type="button" onClick={toggleDocumentoType}>
-            Alternar para {isCNPJ ? 'CPF' : 'CNPJ'}
+          <button type="button" onClick={toggleDocumentoIdentidade}>
+            Alternar para {formData.tipoDocumento === 'RG' ? 'CNH' : 'RG'}
           </button>
         </div>
 
         <div>
-          <label>RG:</label>
-          <InputMask
-            mask="99.999.999-9" 
-            type="text"
-            name="rg"
-            value={formData.rg}
+          <label>Data de Nascimento:</label>
+          <input
+            type="date"
+            name="nascimento"
+            value={formData.nascimento}
             onChange={handleInputChange}
             required
           />
         </div>
 
+        {/* Campo de Gênero */}
         <div>
-          <label>Data de Nascimento:</label>
-          <DatePicker
-            selected={formData.nascimento}
-            onChange={handleDateChange}
-            dateFormat="dd/MM/yyyy"
-            maxDate={new Date()}
-            showYearDropdown
-            showMonthDropdown
-            dropdownMode="select"
+          <label>Gênero:</label>
+          <select
+            name="genero"
+            value={formData.genero}
+            onChange={handleInputChange}
             required
-          />
+          >
+            <option value="">Selecione um Gênero</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Feminino">Feminino</option>
+            <option value="Outro">Outro</option>
+          </select>
         </div>
 
         <div>
