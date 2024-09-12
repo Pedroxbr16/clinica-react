@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import './css/ConfigADM.css';
 
 const ConfigADM = () => {
-  const [types, setTypes] = useState(['Consulta Geral', 'Exame', 'Retorno']); // Array inicializado
-  const [newType, setNewType] = useState(''); // Estado para o valor do novo tipo de consulta
+  const [types, setTypes] = useState(['Consulta Geral', 'Exame', 'Retorno']); 
+  const [newType, setNewType] = useState(''); 
 
   const handleAddType = () => {
-    if (newType.trim()) { // Verifica se o campo não está vazio
+    if (newType.trim()) { 
       setTypes([...types, newType]);
-      setNewType(''); // Limpa o campo de texto após adicionar
+      setNewType(''); 
     }
   };
 

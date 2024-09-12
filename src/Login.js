@@ -3,28 +3,29 @@ import { useNavigate } from 'react-router-dom';
 import './css/Login.css';
 
 function Login({ onLogin }) {
-  // Estados para armazenar o valor do nome de usuário e senha
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  
-  // Hook para navegar programaticamente para outras rotas
+  const [showPassword, setShowPassword] = useState(false);
+
   const navigate = useNavigate();
 
-  // Função chamada ao enviar o formulário
   const handleSubmit = (e) => {
-    e.preventDefault(); // Previne o comportamento padrão de recarregamento da página
+    e.preventDefault();
 
-    // Simulação de verificação de credenciais
     if (username && password) {
-      // Armazena a autenticação no localStorage
       localStorage.setItem('isAuthenticated', 'true');
-      
-      // Chama a função onLogin passada como props para atualizar o estado de autenticação
       onLogin();
-      
-      // Redireciona para a página inicial após o login
       navigate('/');
     }
+  };
+
+  const handleRegister = () => {
+    navigate('/register');
+  };
+
+  // Alterna a visibilidade da senha
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -36,25 +37,34 @@ function Login({ onLogin }) {
           <input
             type="text"
             id="username"
-            placeholder='insira seu usuário...'
+            placeholder="Insira seu usuário..."
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
           />
         </div>
-        <div className="form-group">
+        <div className="form-group password-group">
           <label htmlFor="password">Senha</label>
-          <input
-            type="password"
-            id="password"
-            placeholder='insira sua senha...'
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
+          <div className="password-container">
+            <input
+              type={showPassword ? 'text' : 'password'}
+              id="password"
+              placeholder="Sua senha"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <span className="password-toggle" onClick={toggleShowPassword}>
+              <i className={showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'}></i> {/* Ícones de olho */}
+            </span>
+          </div>
         </div>
         <button type="submit" className="login-button">Entrar</button>
       </form>
+
+      <button onClick={handleRegister} className="register-button">
+        Cadastra-se
+      </button>
     </div>
   );
 }

@@ -17,6 +17,7 @@ h2 {
 
 .form-group {
   margin-bottom: 15px;
+  position: relative; /* Necessário para o posicionamento do ícone */
 }
 
 .form-group label {
@@ -30,6 +31,30 @@ h2 {
   box-sizing: border-box;
 }
 
+/* Para o campo de senha */
+.password-container {
+  position: relative;
+}
+
+.password-container input {
+  width: 100%;
+  padding-right: 40px; /* Espaço extra para o ícone */
+}
+
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  color: #6c757d;
+}
+
+.password-toggle:hover {
+  color: #000;
+}
+
 .login-button {
   width: 100%;
   padding: 10px;
@@ -38,8 +63,24 @@ h2 {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-top: 10px;
 }
 
 .login-button:hover {
   background-color: #45a049;
+}
+
+.register-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.register-button:hover {
+  background-color: #0056b3;
 }
