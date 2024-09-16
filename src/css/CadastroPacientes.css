@@ -1,11 +1,11 @@
+/* CadastroPacientes.css */
+
 .cadastro-pacientes {
-  width: 1000px;
-  margin: auto;
-  padding: 20px;
+  margin-top: 0px;
+  padding: 5px;
+  background-color: #f9f9f9;
   border: 1px solid #ccc;
   border-radius: 10px;
-  background-color: #f9f9f9;
-  margin-top: 60px;
 }
 
 .cadastro-pacientes h2 {
@@ -13,46 +13,28 @@
   margin-bottom: 20px;
 }
 
-.cadastro-pacientes form {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Três colunas */
-  gap: 14px; /* Espaçamento entre os campos */
-}
-
-.cadastro-pacientes form div {
-  margin-bottom: 15px;
-}
-
 .cadastro-pacientes label {
-  display: block;
   font-weight: bold;
-  margin-bottom: 5px;
 }
 
-.cadastro-pacientes input[type="text"],
-.cadastro-pacientes input[type="email"],
-.cadastro-pacientes input[type="file"],
-.cadastro-pacientes input[type="date"],
-.cadastro-pacientes select,
-.cadastro-pacientes .react-datepicker-wrapper,
-.cadastro-pacientes .react-datepicker__input-container {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
-}
-
-.cadastro-pacientes button {
-  grid-column: span 3; /* O botão ocupa as três colunas */
-  padding: 10px;
-  background-color: #4CAF50;
-  color: white;
+.toggle-doc-btn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #fff;
+  background-color: #007bff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.cadastro-pacientes button:hover {
-  background-color: #45a049;
+.toggle-doc-btn:hover {
+  background-color: #0056b3;
+}
+
+.toggle-doc-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 }

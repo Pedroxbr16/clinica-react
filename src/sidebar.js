@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faCalendarAlt, faCog } from '@fortawesome/free-solid-svg-icons';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/Sidebar.css';
 
 function Sidebar({ onLogout }) {
@@ -29,48 +30,44 @@ function Sidebar({ onLogout }) {
 
   return (
     <div className="sidebar">
-      <h2><Link to="/">Home</Link></h2>
-      <ul>
-        <li>
-          <a href="#pacientes" onClick={togglePatientsList}>
-            <FontAwesomeIcon icon={faUser} style={{ color: '#007bff' }} /> Pacientes
+      <h2><Link to="/" className="text-white text-decoration-none">Home</Link></h2>
+      <ul className="nav flex-column">
+        <li className="nav-item">
+          <a href="#pacientes" className="nav-link text-white" onClick={togglePatientsList}>
+            <FontAwesomeIcon icon={faUser} className="me-2" style={{ color: '#ffcc00' }} /> Pacientes
           </a>
           {showPatientsList && (
-            <ul className="nested-list">
-              <li><Link to="/listagemPaciente">Listagem</Link></li>
-              <li><Link to="/cadastro">Cadastro</Link></li>
+            <ul className="nested-list list-unstyled">
+              <li><Link to="/listagemPaciente" className="text-white nav-link">Listagem</Link></li>
+              <li><Link to="/cadastro" className="nav-link text-white">Cadastro</Link></li>
             </ul>
           )}
         </li>
-        <li>
-          <a href="#agendamentos" onClick={toggleAppointmentsList}>
-            <FontAwesomeIcon icon={faCalendarAlt} style={{ color: '#28a745' }} /> Agendamentos
+        <li className="nav-item">
+          <a href="#agendamentos" className="nav-link text-white" onClick={toggleAppointmentsList}>
+            <FontAwesomeIcon icon={faCalendarAlt} className="me-2" style={{ color: '#28a745' }} /> Agendamentos
           </a>
           {showAppointmentsList && (
-            <ul className="nested-list">
-              <li><Link to="/agenda">Mostrar Agenda</Link></li>
-              <li><Link to="/create-event">Criar Agendamento</Link></li>
+            <ul className="nested-list list-unstyled">
+              <li><Link to="/agenda" className="nav-link text-white">Mostrar Agenda</Link></li>
+              <li><Link to="/create-event" className="nav-link text-white">Criar Agendamento</Link></li>
             </ul>
           )}
         </li>
-        <li>
-          <a href="#administracao" onClick={toggleAdminList}>
-            <FontAwesomeIcon icon={faCog} style={{ color: '#A9A9A9' }}/> Administração
+        <li className="nav-item">
+          <a href="#administracao" className="nav-link text-white" onClick={toggleAdminList}>
+            <FontAwesomeIcon icon={faCog} className="me-2" style={{ color: '#343a40' }} /> Administração
           </a>
           {showAdminList && (
-            <ul className="nested-list">
-              <li><Link to="/dashboard">Dashboard</Link></li>
-              <li><Link to="/config">Configurações</Link></li>
+            <ul className="nested-list list-unstyled">
+              <li><Link to="/dashboard" className="nav-link text-white">Dashboard</Link></li>
+              <li><Link to="/config" className="nav-link text-white">Configurações</Link></li>
             </ul>
           )}
         </li>
       </ul>
-      <div className="sidebar-footer">
-        <button 
-          onClick={handleLogoutClick} 
-          className="logout-button">
-          Deslogar
-        </button>
+      <div className="sidebar-footer mt-auto">
+        <button onClick={handleLogoutClick} className="logout-button">Deslogar</button>
       </div>
     </div>
   );

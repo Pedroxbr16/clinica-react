@@ -1,75 +1,72 @@
+/* Sidebar.css */
+
+/* Ajusta a largura da sidebar e adiciona cor de fundo */
 .sidebar {
-  width: 220px;
-  background-color: #BEDCFE;
-  color: #fff;
+  width: 260px; /* Aumenta a largura da sidebar */
+  background-color: #007bff; /* Cor de fundo azul (pode personalizar) */
+  color: #fff; /* Cor do texto */
   padding: 20px;
-  height: 100vh;
+  height: 100vh; /* Altura total da viewport */
   position: fixed;
   display: flex;
   flex-direction: column;
 }
 
+/* Estilo para o título */
 .sidebar h2 {
-  margin-top: 0;
-  text-align: center; 
+  text-align: center;
   font-size: 30px;
+  color: white;
 }
 
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.sidebar .nested-list a {
-  font-size: 20px;
-}
-
-.sidebar ul li {
-  margin-bottom: 15px;
-}
-
+/* Estilo dos links principais */
 .sidebar ul li a {
-  color: #3e3636;
+  color: #fff; /* Cor do texto dos links */
   text-decoration: none;
   display: block;
-  font-size: 25px;
+  font-size: 22px; /* Aumenta o tamanho da fonte */
+  padding: 10px 0;
+}
+.nav-link text-white{
+  font-size: 10px;
 }
 
 .sidebar ul li a:hover {
-  background-color: #1d20236e; /* Cor de fundo ao passar o mouse */
-  border-radius: 5px; /* Bordas arredondadas */
-  width: 100%; /* Largura completa */
+  background-color: #0056b3; /* Cor de fundo ao passar o mouse */
+  border-radius: 5px;
   text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Efeito de clareamento do texto */
 }
 
-.nested-list {
-  padding-left: 20px;
-}
-
-.nested-list li {
-  margin: 5px 0;
-}
-
+/* Links da lista aninhada (submenu) */
 .nested-list li a {
-  color: #ddd;
+  font-size: 18px;
+  color: #fff; /* Cor mais clara para submenu */
+  padding-left: 10px; /* Recuo para submenu */
 }
 
+.nested-list li a:hover {
+  color: #fff;
+}
+
+/* Estilo do botão de logout */
 .logout-button {
-  background-color: red; /* Cor de fundo vermelha */
-  color: white; /* Cor do texto branca */
-  border: none; /* Remove a borda padrão */
-  padding: 10px 20px; /* Espaçamento interno */
-  border-radius: 5px; /* Bordas arredondadas */
-  font-size: 16px; /* Tamanho da fonte */
-  cursor: pointer; /* Cursor de ponteiro */
-  transition: background-color 0.3s ease; /* Animação para o hover */
+  background-color: #dc3545; /* Cor de fundo vermelha */
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
 }
 
 .logout-button:hover {
-  background-color: darkred; /* Altera a cor no hover */
+  background-color: #c82333; /* Altera a cor no hover */
 }
-.sidebar-footer{
+
+/* Para garantir que o botão de logout fique na parte inferior */
+.sidebar-footer {
   margin-top: auto;
   margin-bottom: 50px;
 }
