@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css'; // Bootstrap importado
 import './css/CreateEvent.css';
 
 const CreateEvent = ({ types = [] }) => {
@@ -8,7 +9,7 @@ const CreateEvent = ({ types = [] }) => {
     end: new Date().toISOString().slice(0, 16),   // Formato para datetime-local
     patient: '',
     doctor: '',
-    type: '', 
+    type: '',
   });
 
   const handleInputChange = (e) => {
@@ -23,66 +24,74 @@ const CreateEvent = ({ types = [] }) => {
   };
 
   return (
-    <div className="create-event-container">
-      <h2>Nova Consulta</h2>
+    <div className="container create-event-container mt-5">
+      <h2 className="text-center mb-4">Nova Consulta</h2>
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>Título: </label>
+        <div className="mb-3">
+          <label>Título:</label>
           <input
             type="text"
             name="title"
-            placeholder='Adicione um título a consulta...'
+            className="form-control"
+            placeholder="Adicione um título a consulta..."
             value={event.title}
             onChange={handleInputChange}
             required
           />
         </div>
-        <div className="form-group">
-          <label>Início: </label>
-          <input
-            type="datetime-local"
-            name="start"
-            value={event.start}
-            onChange={handleInputChange}
-            required
-          />
+        <div className="row mb-3">
+          <div className="col-md-6">
+            <label>Início:</label>
+            <input
+              type="datetime-local"
+              name="start"
+              className="form-control"
+              value={event.start}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          <div className="col-md-6">
+            <label>Fim:</label>
+            <input
+              type="datetime-local"
+              name="end"
+              className="form-control"
+              value={event.end}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
         </div>
-        <div className="form-group">
-          <label>Fim: </label>
-          <input
-            type="datetime-local"
-            name="end"
-            value={event.end}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>Paciente: </label>
+        <div className="mb-3">
+          <label>Paciente:</label>
           <input
             type="text"
             name="patient"
-            placeholder='Buscar paciente...'
+            className="form-control"
+            placeholder="Buscar paciente..."
             value={event.patient}
             onChange={handleInputChange}
             required
           />
         </div>
-        <div className="form-group">
-          <label>Médico: </label>
+        <div className="mb-3">
+          <label>Médico:</label>
           <input
             type="text"
             name="doctor"
-            placeholder='Buscar médico...'
+            className="form-control"
+            placeholder="Buscar médico..."
             value={event.doctor}
             onChange={handleInputChange}
             required
           />
         </div>
-        <div className="form-group">
-          <label>Tipo de Consulta: </label>
+        <div className="mb-4">
+          <label>Tipo de Consulta:</label>
           <select
             name="type"
+            className="form-select"
             value={event.type}
             onChange={handleInputChange}
             required
@@ -99,7 +108,7 @@ const CreateEvent = ({ types = [] }) => {
             )}
           </select>
         </div>
-        <button type="submit">Agendar</button>
+        <button type="submit" className="btn btn-primary w-100">Agendar</button>
       </form>
     </div>
   );

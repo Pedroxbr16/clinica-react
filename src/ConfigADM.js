@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css'; // Importando Bootstrap
 import './css/ConfigADM.css';
 
 const ConfigADM = () => {
-  const [types, setTypes] = useState(['Consulta Geral', 'Exame', 'Retorno']); 
-  const [newType, setNewType] = useState(''); 
+  const [types, setTypes] = useState(['Consulta Geral', 'Exame', 'Retorno']);
+  const [newType, setNewType] = useState('');
 
   const handleAddType = () => {
-    if (newType.trim()) { 
+    if (newType.trim()) {
       setTypes([...types, newType]);
-      setNewType(''); 
+      setNewType('');
     }
   };
 
@@ -17,27 +18,32 @@ const ConfigADM = () => {
   };
 
   return (
-    <div className="config-adm-container">
-      <h2>Gerenciar Tipos de Consulta</h2>
+    <div className="container config-adm-container mt-5">
+      <h2 className="text-center mb-4">Gerenciar Tipos de Consulta</h2>
       
-      <ul className="type-list">
+      <ul className="list-group mb-4">
         {types.map((type, index) => (
-          <li key={index}>
+          <li key={index} className="list-group-item d-flex justify-content-between align-items-center">
             {type}
-            <button onClick={() => handleRemoveType(index)}>Remover</button>
+            <button className="btn btn-danger btn-sm" onClick={() => handleRemoveType(index)}>
+              Remover
+            </button>
           </li>
         ))}
       </ul>
-      
-      <div className="add-type-container">
-        <input 
-          type="text"
-          value={newType}
-          onChange={(e) => setNewType(e.target.value)}
-          placeholder="Digite o novo tipo de consulta..."
-        />
-        <button onClick={handleAddType} className="add-type-button">Adicionar</button>
-      </div>
+
+      <div className="input-group mb-3">
+  <input
+    type="text"
+    className="form-control"
+    value={newType}
+    onChange={(e) => setNewType(e.target.value)}
+    placeholder="Digite o novo tipo de consulta..."
+  />
+  <button onClick={handleAddType} className="btn btn-success">
+    Adicionar
+  </button>
+</div>
     </div>
   );
 };

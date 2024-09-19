@@ -3,7 +3,7 @@
 /* Ajusta a largura da sidebar e adiciona cor de fundo */
 .sidebar {
   width: 260px; /* Aumenta a largura da sidebar */
-  background-color: #007bff; /* Cor de fundo azul (pode personalizar) */
+  background-color: #82b9f3; /* Cor de fundo azul (pode personalizar) */
   color: #fff; /* Cor do texto */
   padding: 20px;
   height: 100vh; /* Altura total da viewport */
@@ -32,7 +32,7 @@
 }
 
 .sidebar ul li a:hover {
-  background-color: #0056b3; /* Cor de fundo ao passar o mouse */
+  background-color: #5ea9fa; /* Cor de fundo ao passar o mouse */
   border-radius: 5px;
   text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Efeito de clareamento do texto */
 }

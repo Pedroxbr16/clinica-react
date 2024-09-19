@@ -1,69 +1,50 @@
+/* ConfigADM.css */
+
 /* Container principal da página */
 .config-adm-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 50px;
-}
+    max-width: 600px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
   
-h2 {
+  /* Título */
+  h2 {
     color: #333;
     font-size: 24px;
     margin-bottom: 20px;
-}
+  }
   
-/* Lista de tipos de consulta */
-.type-list {
-    list-style-type: none;
-    padding: 0;
-    margin-bottom: 20px;
-    width: 300px;
-}
-  
-.type-list li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  /* Estilização da lista de tipos de consulta */
+  .list-group-item {
     background-color: #f9f9f9;
-    padding: 10px;
-    margin-bottom: 10px;
     border-radius: 5px;
     border: 1px solid #ddd;
     font-size: 16px;
-}
+  }
   
-.type-list li:hover {
+  .list-group-item:hover {
     background-color: #ececec;
-}
+  }
   
-/* Botões de ação */
-.type-list li button {
-    background-color: #dc3545;
-    color: white;
-    border: none;
+  /* Botão de remover tipo */
+  .btn-danger {
     padding: 5px 10px;
-    border-radius: 3px;
-    cursor: pointer;
     font-size: 14px;
-}
+  }
   
-.type-list li button:hover {
-    background-color: #c82333;
-}
-  
-/* Botão de adicionar tipo de consulta */
-.add-type-button {
-    background-color: #28a745;
-    color: white;
-    border: none;
+  .btn-success {
     padding: 10px 20px;
-    border-radius: 5px;
     font-size: 16px;
-    cursor: pointer;
-}
+    height: 45.8px;
+  }
+  /* Ajustes de botão dentro do input-group */
+.input-group .btn {
+    margin-left: 0; /* Garante que o botão esteja alinhado ao input */
+    padding: 10px 20px; /* Ajuste de tamanho para o botão */
+  }
   
-.add-type-button:hover {
-    background-color: #218838;
-}
-  
+  .input-group .form-control {
+    flex: 1; /* Garante que o input ocupe o espaço adequado */
+  }
