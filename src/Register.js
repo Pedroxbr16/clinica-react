@@ -117,6 +117,18 @@ function Register() {
                   required
                 />
               </div>
+              <div className='form-group mb-3'>
+                <label htmlFor='email'>Email</label>
+                <input
+                  type='text'
+                  id='email'
+                  className='form-control'
+                  placeholder='digite seu email...'
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
             </>
           )}
 
