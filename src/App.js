@@ -52,7 +52,7 @@ function App() {
       </div>
     </Router>
   );
-}
+} 
 
 function Home() {
   return <h1>DocTech</h1>;

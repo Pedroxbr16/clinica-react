@@ -34,9 +34,9 @@ function CadastroPacientes() {
   };
 
   const handleCepBlur = async () => {
-    if (formData.cep.length === 9) {
+    if (formData.cep.replace(/\D/g, '').length === 8) {
       try {
-        const response = await axios.get(`https://viacep.com.br/ws/${formData.cep}/json/`);
+        const response = await axios.get(`https://viacep.com.br/ws/${formData.cep.replace(/\D/g, '')}/json/`);
         if (response.data) {
           setFormData({
             ...formData,
@@ -57,9 +57,23 @@ function CadastroPacientes() {
     'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'
   ];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Dados do formulário:', formData);
+    const data = new FormData();
+    Object.keys(formData).forEach(key => {
+      data.append(key, formData[key]);
+    });
+
+    try {
+      const response = await axios.post('http://localhost:8000/api/paciente', data, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+      console.log('Sucesso:', response.data);
+    } catch (error) {
+      console.error('Erro ao enviar dados:', error);
+    }
   };
 
   const toggleDocumentoIdentidade = () => {
