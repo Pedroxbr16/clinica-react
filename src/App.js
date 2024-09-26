@@ -55,7 +55,7 @@ function App() {
 } 
 
 function Home() {
-  return <h1>DocTech</h1>;
+
 }
 
 export default App;
