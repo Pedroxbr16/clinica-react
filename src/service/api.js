@@ -3,7 +3,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'http://localhost:8000/api', // URL base do Symfony
+    baseURL: 'http://localhost:8000/clinica_back/', // URL base do Symfony
     headers: {
         'Content-Type': 'application/json'
     }

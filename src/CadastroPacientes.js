@@ -24,6 +24,8 @@ function CadastroPacientes() {
     celular: '',
   });
 
+  const [submitStatus, setSubmitStatus] = useState(''); // Estado para guardar o status de sucesso ou erro
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -65,15 +67,40 @@ function CadastroPacientes() {
     });
 
     try {
-      const response = await axios.post('http://localhost:8000/api/paciente', data, {
+      const response = await axios.post('service/api.js', data, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
       });
       console.log('Sucesso:', response.data);
+      setSubmitStatus('Cadastro realizado com sucesso!'); // Definir mensagem de sucesso
+      resetForm(); // Limpar o formulário
     } catch (error) {
       console.error('Erro ao enviar dados:', error);
+      setSubmitStatus('Erro ao cadastrar. Por favor, tente novamente.'); // Definir mensagem de erro
     }
+  };
+
+  const resetForm = () => {
+    // Limpar o formulário
+    setFormData({
+      nome: '',
+      foto: null,
+      cep: '',
+      numero: '',
+      bairro: '',
+      cidade: '',
+      estado: '',
+      cpf: '',
+      cnpj: '',
+      documentoIdentidade: '',
+      tipoDocumento: 'RG',
+      nascimento: '',
+      genero: '',
+      email: '',
+      telefone: '',
+      celular: '',
+    });
   };
 
   const toggleDocumentoIdentidade = () => {
@@ -87,6 +114,14 @@ function CadastroPacientes() {
   return (
     <div className="container cadastro-pacientes">
       <h2>Cadastro de Pacientes</h2>
+
+      {/* Exibir mensagem de sucesso ou erro */}
+      {submitStatus && (
+        <div className={`alert ${submitStatus.includes('sucesso') ? 'alert-success' : 'alert-danger'}`} role="alert">
+          {submitStatus}
+        </div>
+      )}
+
       <form onSubmit={handleSubmit} className="row g-3">
         <div className="col-md-6">
           <label>Nome:</label>
