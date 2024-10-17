@@ -31,7 +31,7 @@ function Login({ onLogin }) {
   return (
     <div className="login-page d-flex justify-content-center align-items-center vh-100">
       <div className="login-container bg-light p-4 shadow-sm rounded">
-        <h2 className="text-center mb-4">DocTech</h2>
+        <h2 className="text-center mb-4">P.E.M Tech</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group mb-3">
             <label htmlFor="username">Usuário</label>
