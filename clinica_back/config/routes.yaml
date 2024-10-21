@@ -1,5 +1,4 @@
-controllers:
-    resource:
-        path: ../src/Controller/
-        namespace: App\Controller
-    type: attribute
+paciente_create:
+    path: /pacientes
+    controller: App\Controller\PacienteController::create
+    methods: POST   

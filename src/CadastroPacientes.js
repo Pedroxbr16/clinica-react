@@ -83,7 +83,7 @@ function CadastroPacientes() {
     });
 
     try {
-      const response = await axios.post('http://localhost:8000/api/pacientes', data, {
+      const response = await axios.post('http://localhost:8000/pacientes', data, {
         headers: {
           'Content-Type': 'multipart/form-data',
         }

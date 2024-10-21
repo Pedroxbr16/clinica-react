@@ -43,6 +43,12 @@ class Paciente
     #[ORM\Column(length: 255)]
     private ?string $numero = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $estado = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $foto = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -164,6 +170,30 @@ class Paciente
     public function setNumero(string $numero): static
     {
         $this->numero = $numero;
+
+        return $this;
+    }
+
+    public function getEstado(): ?string
+    {
+        return $this->estado;
+    }
+
+    public function setEstado(string $estado): static
+    {
+        $this->estado = $estado;
+
+        return $this;
+    }
+
+    public function getFoto(): ?string
+    {
+        return $this->foto;
+    }
+
+    public function setFoto(?string $foto): static
+    {
+        $this->foto = $foto;
 
         return $this;
     }
