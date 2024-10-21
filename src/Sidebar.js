@@ -39,6 +39,7 @@ function Sidebar({ onLogout }) {
           <ul className={`nested-list list-unstyled ${showPatientsList ? 'show' : ''}`}>
             <li><Link to="/listagemPaciente" className="text-white nav-link">Listagem</Link></li>
             <li><Link to="/cadastro" className="nav-link text-white">Cadastro</Link></li>
+            <li><Link to="/pedido-exames" className="nav-link text-white">Exames</Link></li>
           </ul>
         </li>
         <li className="nav-item">

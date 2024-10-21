@@ -8,6 +8,7 @@ import CadastroPacientes from './CadastroPacientes';
 import Agenda from './Agenda';
 import CreateEvent from './CreateEvent'; 
 import Config from './ConfigADM';
+import PedidoExames from './PedidoExames'; // Importando o componente de pedidos de exames
 import './css/App.css';
 
 function App() {
@@ -47,6 +48,9 @@ function App() {
             <Route path="/agenda" element={isAuthenticated ? <Agenda /> : <Navigate to="/login" />} />
             <Route path="/create-event" element={isAuthenticated ? <CreateEvent /> : <Navigate to="/login" />} />
             <Route path="/config" element={isAuthenticated ? <Config /> : <Navigate to="/login" />} />
+            
+            {/* Rota de Pedido de Exames */}
+            <Route path="/pedido-exames" element={isAuthenticated ? <PedidoExames /> : <Navigate to="/login" />} />
           </Routes>
         </div>
       </div>
@@ -55,6 +59,7 @@ function App() {
 } 
 
 function Home() {
+
 
 }
 
